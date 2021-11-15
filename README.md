@@ -6,9 +6,9 @@
   system just by changing "ami" present in terraform script,but then we have to 
   look for different commands for installing postgres.
 
-* We have created securiy group for inbound and outbount access of postgres database.
+* We have created security group for inbound and outbound access of postgres database.
 
-* Inbount rule and outbound rule are usind for accessing ec2 instance using specific port range.
+* Inbound rule(ingress) and outbound rule(egress) are used for accessing ec2 instance using specific port range.
 
 * CIDR block is used to decide the port range which can access the instance.
 
