@@ -1,0 +1,28 @@
+Link to be followed for installing postgres in suse linux :
+https://www.ktexperts.com/install-postgresql12-on-suse-linux-in-aws/
+
+1. sudo su
+2. zypper update -y
+3. zypper addrepo https://download.postgresql.org/pub/repos/zypp/repo/pgdg-sles-12.repo
+4. zypper install postgresql12-server
+5. psql -V
+6. systemctl enable postgresql
+7. systemctl start postgresql
+8. systemctl status postgresql
+9. su - postgres
+10. psql
+11. psql -U postgres
+12. ALTER USER user_name WITH PASSWORD 'new_password';
+
+psql -U postgres -c "CREATE ROLE connectec2;"
+psql -U postgres -c "ALTER ROLE connectec2 with LOGIN;"
+psql -U postgres -c "ALTER USER connectec2 CREATEDB;"
+psql -U postgres -c "ALTER USER connectec2 WITH PASSWORD 'password';"
+
+Update the files so that we can connect to postgres database from any pgadmin client:
+13. /var/lib/pgsql/data/  vim postgresql.conf  -listen_addresses = '*'
+14. /var/lib/pgsql/data/ vim pg_hba.conf  -host all all 0.0.0.0/0 md5 -host all all ::/0 md5
+
+Finally restart the postgres
+15. systemctl restart postgresql 
+16. systemctl status postgresql
